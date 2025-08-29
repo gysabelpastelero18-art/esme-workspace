@@ -1,8 +1,9 @@
-import { NextResponse } from 'next/server';
+
+import { NextResponse, NextRequest } from 'next/server';
 import { deleteUser } from '../../../../../lib/user-database';
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
-  const userId = Number(params.id);
+export async function DELETE(request: NextRequest, context: { params: { id: string } }) {
+  const userId = Number(context.params.id);
   if (!userId) {
     return NextResponse.json({ success: false, message: 'Invalid user ID' }, { status: 400 });
   }
