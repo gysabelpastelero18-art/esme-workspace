@@ -1,0 +1,7 @@
+/* Custom selector and instruction font size for production page */
+.selector-18 {
+  font-size: 18px !important;
+}
+.instruction-18 {
+  font-size: 18px !important;
+}

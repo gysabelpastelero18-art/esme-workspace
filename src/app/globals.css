@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@media print {
+  .print-totals-row {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+  }
+  .print-totals-row table {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 16px !important;
+  }
+  .print-totals-row tbody {
+    display: table-row-group !important;
+  }
+  .print-total-row-tr {
+    display: table-row !important;
+  }
+  .print-total-row-tr td {
+    display: table-cell !important;
+  }
+}
+  /* Reduce short and over column width and add table margins for print */
+  .bakery-print-table th.short,
+  .bakery-print-table td.short,
+  .bakery-print-table th.over,
+  .bakery-print-table td.over {
+    min-width: 2ch !important;
+    max-width: 2ch !important;
+    width: 2ch !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center !important;
+  }
+  .bakery-print-table {
+    margin-left: 2vw !important;
+    margin-right: 2vw !important;
+    width: 96vw !important;
+  }

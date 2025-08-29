@@ -1,0 +1,3 @@
+# To support Excel import, run:
+npm install xlsx
+# This will allow reading .xlsx and .xls files in the browser.

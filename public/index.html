@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESMERALDA FINANCE Login</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+    body {
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: url('images/login-bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: #222;
+    }
+    .login-container {
+        background: rgba(255,255,255,0.97);
+        max-width: 420px;
+        margin: 80px auto 0 auto;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(20,90,50,0.18);
+        padding: 2.5rem 2rem 2rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .elegant-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        color: #4a6a4a;
+        letter-spacing: 1px;
+        margin-bottom: 1.2rem;
+    }
+    </style>
+</head>
+<body>
+    <div id="login" class="login-container">
+        <img src="images/logo.png" alt="Esmeralda Logo" style="width:120px;height:120px;margin-bottom:22px;">
+        <h2 class="elegant-title">Welcome to ESMERALDA Finance</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required style="width:90%;padding:8px;margin:8px 0;"><br>
+            <input type="password" id="password" placeholder="Password" required style="width:90%;padding:8px;margin:8px 0;"><br>
+            <button type="submit" style="width:100%;padding:10px;background:#229954;color:#fff;border:none;border-radius:5px;">Login</button>
+        </form>
+        <p id="loginError" style="color:#ffdddd;display:none;">Invalid username or password.</p>
+    </div>
+    <script>
+        const USERS = [
+            { username: "admin", password: "admin123" },
+            { username: "manager", password: "manager123" }
+        ];
+        document.getElementById('loginForm').onsubmit = function(e) {
+    e.preventDefault();
+    const u = document.getElementById('username').value;
+    const p = document.getElementById('password').value;
+    const found = USERS.find(user => user.username === u && user.password === p);
+    if (found) {
+        window.location.href = "access.html"; // <-- Go to access.html after login
+    } else {
+        document.getElementById('loginError').style.display = 'block';
+    }
+};
+
+    function logout() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('loginForm').reset();
+        document.getElementById('loginError').style.display = 'none';
+        document.getElementById('branchSummary').innerHTML = '';
+    }
+
+    function showBranchIcons() {
+        const iconsDiv = document.getElementById('branchIcons');
+        iconsDiv.innerHTML = '';
+        data.branches.forEach((branch, idx) => {
+            const icon = document.createElement('div');
+            icon.className = 'branch-icon';
+            icon.title = branch.name;
+            icon.innerHTML = `<span>${getInitials(branch.name)}</span><div style="font-size:0.9rem;margin-top:8px;">${branch.name}</div>`;
+            icon.onclick = () => showBranchSummary(idx);
+            iconsDiv.appendChild(icon);
+        });
+        document.getElementById('branchSummary').innerHTML = '<div style="text-align:center;color:#229954;font-size:1.2rem;">Click a branch icon to view its report.</div>';
+    }
+
+    function getInitials(name) {
+        return name.split(' ').map(w => w[0]).join('').toUpperCase();
+    }
+
+    function showBranchSummary(idx) {
+        const branch = data.branches[idx];
+        const totalSales = branch.sales.reduce((sum, item) => sum + Number(item.amount), 0);
+        const totalExpenses = branch.expenses.reduce((sum, item) => sum + Number(item.amount), 0);
+        const netProfit = totalSales - totalExpenses;
+        document.getElementById('branchSummary').innerHTML = `
+            <div class="branch-report">
+                <h2>${branch.name}</h2>
+                <table class="report-table">
+                    <tr><th colspan="2">Sales</th></tr>
+                    ${branch.sales.map(item => `<tr><td>${item.description}</td><td>₱${item.amount.toLocaleString()}</td></tr>`).join('')}
+                    <tr><th>Total Sales</th><th>₱${totalSales.toLocaleString()}</th></tr>
+                </table>
+                <table class="report-table">
+                    <tr><th colspan="2">Expenses</th></tr>
+                    ${branch.expenses.map(item => `<tr><td>${item.description}</td><td>₱${item.amount.toLocaleString()}</td></tr>`).join('')}
+                    <tr><th>Total Expenses</th><th>₱${totalExpenses.toLocaleString()}</th></tr>
+                </table>
+                <h3 style="color:#229954;">Net Profit: ₱${netProfit.toLocaleString()}</h3>
+            </div>
+        `;
+    }
+</script>
+<style>
+.branch-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #229954 60%, #145a32 100%);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(34,153,84,0.18);
+    transition: transform 0.15s;
+    margin-bottom: 8px;
+}
+.branch-icon:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 24px rgba(34,153,84,0.25);
+}
+</style>

@@ -1,0 +1,179 @@
+model Transfer {
+  id         Int      @id @default(autoincrement())
+  Group      String
+  TransDate  DateTime
+  DRNo       String
+  Branch     String
+  Department String
+  Category   String
+  Item       String
+  Qty        Float
+  Unit       String
+  Price      Float
+  Amount     Float
+  createdAt  DateTime @default(now())
+}
+model WarehouseInv {
+  id           Int      @id @default(autoincrement())
+  item         String
+  pcsKg        Float?
+  grams        Float?
+  price        Float?
+  amount       Float?
+  category     String?
+  department   String?
+  group        String?
+  branch       String?
+  unit         String?
+  location     String?
+  dateEncoded  DateTime?
+  encodedBy    String?
+  countedBy    String?
+  checkedBy    String?
+  createdAt    DateTime @default(now())
+}
+model User {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  password     String
+  email        String?
+  firstName    String?
+  lastName     String?
+  branch       String?
+  position     String?
+  permissions  String?  // Can be a comma-separated string or use a relation for advanced permissions
+  createdAt    DateTime @default(now())
+}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Purchase {
+  id          Int      @id @default(autoincrement())
+  Group       String
+  InvoiceDate String
+  InvoiceNo   String
+  Supplier    String
+  Category    String
+  Item        String
+  Qty         Float
+  Unit        String
+  Price       Float
+  Amount      Float
+  GramsQty    Float
+  Branch      String
+  createdAt   DateTime @default(now())
+}
+
+
+model Item {
+  MID         Int       @id @default(autoincrement())
+  MDate       DateTime?
+  EKCode      String?   @db.VarChar(50)
+  Barcode     String?   @db.VarChar(50)
+  ItemCode    String?   @db.VarChar(50)
+  FoodGroup   String?   @db.VarChar(50)
+  FGCode      String?   @db.VarChar(50)
+  Category    String?   @db.VarChar(50)
+  FCCode      String?   @db.VarChar(50)
+  Subcategory String?   @db.VarChar(50)
+  FSCCode     String?   @db.VarChar(50)
+  Department  String?   @db.VarChar(50)
+  Supplier    String?   @db.VarChar(100)
+  ItemDesc    String?   @db.VarChar(255)
+  Item        String?   @db.VarChar(100)
+  Brand       String?   @db.VarChar(100)
+  UOMQty      Float?
+  Unit        String?   @db.VarChar(20)
+  CUOMQty     Float?
+  CUnit       String?   @db.VarChar(20)
+  Location    String?   @db.VarChar(50)
+  Storage     String?   @db.VarChar(50)
+  Container   String?   @db.VarChar(50)
+  ForBarcode  Boolean?
+  EncodedBy   String?   @db.VarChar(50)
+  Status      String?   @db.VarChar(20)
+  ForInv      Boolean?
+  EkNum       String?   @db.VarChar(50)
+  BGroup      String?   @db.VarChar(50)
+  PCSPerPack  Int?
+  PricePc     Float?
+  Price       Float?
+  UInv        String?   @db.VarChar(50)
+}
+
+  model Inventory {
+  id           Int      @id @default(autoincrement())
+  item         String
+  pcsKg        Float?
+  grams        Float?
+  price        Float?
+  amount       Float?
+  category     String?
+  department   String?
+  group        String?
+  branch       String?
+  unit         String?
+  dateEncoded  DateTime?
+  encodedBy    String?
+  countedBy    String?
+  checkedBy    String?
+  createdAt    DateTime @default(now())
+  }
+
+model WarehouseNF {
+  id           Int      @id @default(autoincrement())
+  item         String
+  pcsKg        Float?
+  grams        Float?
+  price        Float?
+  amount       Float?
+  category     String?
+  department   String?
+  group        String?
+  branch       String?
+  unit         String?
+  location     String?
+  dateEncoded  DateTime?
+  encodedBy    String?
+  countedBy    String?
+  checkedBy    String?
+  createdAt    DateTime @default(now())
+}
+
+model NonFoodItem {
+  NFID         Int      @id @default(autoincrement())
+  Group        String?
+  GCode        String?
+  Category     String?
+  CCode        String?
+  SubCategory  String?
+  SCCode       String?
+  Brand        String?
+  Item         String?
+  Supplier     String?
+  Price        Float?
+  Barcode      String?
+  BIRGroup     String?
+  Size         String?
+  Model        String?
+  Serial       String?
+  EncodeDate   DateTime?
+  EncodedBy    String?
+  PCSPerPack   Int?
+  PricePc      Float?
+  Unit         String?
+  SUInv        String?
+  UInv         String?
+}

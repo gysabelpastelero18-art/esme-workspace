@@ -1,0 +1,54 @@
+[
+  {
+    "id": "admin-1",
+    "username": "admin",
+    "password": "$2b$10$tWMQ/SyU4p/UotDgTv9AeO3urr54SrWz1fhCJUxPch5ClrNNge69S",
+    "createdAt": "2025-08-07T17:03:32.277Z"
+  },
+  {
+    "id": "manager-1",
+    "username": "manager",
+    "password": "$2b$10$p5c4899ZHWwfMKiDm5eUuOrYBLNGtrzZKJsFJbwCYZ3Z2MwtjXO4a",
+    "createdAt": "2025-08-07T17:03:32.351Z"
+  },
+  {
+    "id": "user-1754586212431-7f7hpk2rb",
+    "username": "Jessa",
+    "password": "$2b$10$3bgB5a24wYy7UQXM.k.POOCHCWh9IxBd.zqlDh9eJDrZYrOedcP9G",
+    "email": "gysabelpastelero18@gmail.com",
+    "createdAt": "2025-08-07T17:03:32.431Z",
+    "lastLogin": "2025-08-24T23:14:13.855Z"
+  },
+  {
+    "id": "user-1754637587190-ppfhexzmz",
+    "username": "Belle",
+    "password": "$2b$10$0eV8GNts3Rl0M9nnKrA80.kDfWmQrXLB0/SJ.4ZqLxqXpmjYrGG9e",
+    "email": "maribelaunorcumpa@gmail.com",
+    "createdAt": "2025-08-08T07:19:47.190Z",
+    "lastLogin": "2025-08-24T10:56:46.868Z"
+  },
+  {
+    "id": "user-1754896959580-uhvbutc06",
+    "username": "Aileen",
+    "password": "$2b$10$MzUg0/57YIAGjwSYqQdFlORlYX1oYCel894U6SFwOeCi.4deHBWdC",
+    "email": "aileenperero27@gmail.com",
+    "createdAt": "2025-08-11T07:22:39.580Z",
+    "lastLogin": "2025-08-18T09:20:19.639Z"
+  },
+  {
+    "id": "user-1755505917757-3avgr4vzt",
+    "username": "MHAU",
+    "password": "$2b$10$htiawMRSlWWeSGeqAH9s9.ISXv/I3lmr8Dws1Goe.qQfiMbxY9aeW",
+    "email": "maureenpesigan01@gmail.com",
+    "createdAt": "2025-08-18T08:31:57.757Z",
+    "lastLogin": "2025-08-24T10:55:21.291Z"
+  },
+  {
+    "id": "user-1756007893323-2i4k0jifk",
+    "username": "Lovely",
+    "password": "$2b$10$X1Hz6icthV57JFOoM0Y5c.F0RRAgP0o/gHm.DsCAr1WkNk2ZDSuuW",
+    "email": "manuellovely16@gmail.com",
+    "createdAt": "2025-08-24T03:58:13.323Z",
+    "lastLogin": "2025-08-24T03:58:20.459Z"
+  }
+]

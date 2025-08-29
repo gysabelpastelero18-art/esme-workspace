@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESMERALDA FINANCE Home</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- Elegant serif font for finance feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: url('images/login-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #2d3a2e;
+        }
+        .access-container {
+            background: rgba(255,255,245,0.93);
+            max-width: 440px;
+            margin: 80px auto 0 auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(74,106,74,0.13);
+            padding: 2.7rem 2.2rem 2.2rem 2.2rem;
+            text-align: center;
+            position: relative;
+            border: 1.5px solid #b7cbb2;
+        }
+        .access-title {
+            color: #4a6a4a;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.2rem;
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+        .access-btn {
+            width: 92%;
+            padding: 18px;
+            margin: 18px 0;
+            background: linear-gradient(90deg, #b7cbb2 70%, #7a9a7a 100%);
+            color: #2d3a2e;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.18rem;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            font-weight: 600;
+            box-shadow: 0 2px 12px rgba(74,106,74,0.10);
+            cursor: pointer;
+            transition: background 0.18s, transform 0.12s, color 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .access-btn.selected, .access-btn:active, .access-btn:hover {
+            background: linear-gradient(90deg, #7a9a7a 60%, #b7cbb2 100%);
+            color: #1d2a1e;
+            transform: scale(1.04);
+            outline: 2px solid #7a9a7a;
+        }
+        .access-icon {
+            font-size: 1.6rem;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        .access-sub {
+            color: #7a9a7a;
+            font-size: 1.08rem;
+            margin-bottom: 2.2rem;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+        }
+        .access-logo {
+            width: 110px;
+            height: 110px;
+            margin-bottom: 14px;
+            border-radius: 50%;
+            box-shadow: 0 2px 12px rgba(74,106,74,0.10);
+            border: 2.5px solid #b7cbb2;
+            background: #fff;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="access-container">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+            <img src="images/logo.png" alt="Esmeralda Logo" class="access-logo">
+            <div class="access-title">ESMERALDA FINANCE</div>
+            <div class="access-sub">Finance & Accounting Portal</div>
+        </div>
+        <button class="access-btn" id="dailySalesBtn">
+           <span class="access-icon">📝</span> Daily Sales Input
+        </button>
+        <button class="access-btn" id="inventoryBtn">
+            <span class="access-icon">📦</span> Inventory
+        </button>
+        <button class="access-btn" id="salesBtn">
+            <span class="access-icon">📊</span> Sales vs Expenses
+        </button>
+        
+    </div>
+    <script>
+        // Highlight selected button visually
+        function selectBtn(btn) {
+            document.querySelectorAll('.access-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+        document.getElementById('salesBtn').onclick = function() {
+            selectBtn(this);
+            setTimeout(() => { window.location.href = 'dashboard.html'; }, 120);
+        };
+        document.getElementById('inventoryBtn').onclick = function() {
+            selectBtn(this);
+            setTimeout(() => { window.location.href = 'inventory.html'; }, 120);
+        };
+        document.getElementById('dailySalesBtn').onclick = function() {
+            selectBtn(this);
+            setTimeout(() => { window.location.href = 'daily-sales.html'; }, 120);
+        };
+    </script>
+</body>
+</html>
